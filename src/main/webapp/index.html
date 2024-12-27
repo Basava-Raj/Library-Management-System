@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Library Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showForm('addBookForm')">Add Book</a></li>
+                <li><a href="#" onclick="showForm('borrowBookForm')">Borrow Book</a></li>
+                <li><a href="#" onclick="showForm('returnBookForm')">Return Book</a></li>
+                <li><a href="#" onclick="showForm('searchBookForm')">Search Book</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Add Book Form -->
+        <div id="addBookForm" class="form-container" style="display:none;">
+            <h2>Add New Book</h2>
+            <form id="addBook" action="AddBookServlet" method="post" onsubmit="handleAddBook(event)">
+                <input type="text" id="title" name="title" placeholder="Book Title" required><br>
+                <input type="text" id="author" name="author" placeholder="Author Name" required><br>
+                <button type="submit">Add Book</button>
+            </form>
+            <p id="addBookResponse" class="response-message"></p>
+        </div>
+
+        <!-- Borrow Book Form -->
+        <div id="borrowBookForm" class="form-container" style="display:none;">
+            <h2>Borrow Book</h2>
+            <form id="borrowBook" action="BorrowBookServlet" method="post" onsubmit="handleBorrowBook(event)">
+                <input type="number" id="borrowBookId" name="bookId" placeholder="Book ID" required><br>
+                <input type="number" id="userId" name="userId" placeholder="User ID" required><br>
+                <button type="submit">Borrow Book</button>
+            </form>
+            <p id="borrowBookResponse" class="response-message"></p>
+        </div>
+
+        <!-- Return Book Form -->
+        <div id="returnBookForm" class="form-container" style="display:none;">
+            <h2>Return Book</h2>
+            <form id="returnBook" action="ReturnBookServlet" method="post" onsubmit="handleReturnBook(event)">
+                <input type="number" id="returnBookId" name="bookId" placeholder="Book ID" required><br>
+                <input type="number" id="returnUserId" name="userId" placeholder="User ID" required><br>
+                <button type="submit">Return Book</button>
+            </form>
+            <p id="returnBookResponse" class="response-message"></p>
+        </div>
+
+        <!-- Search Book Form -->
+        <div id="searchBookForm" class="form-container" style="display:none;">
+            <h2>Search Book</h2>
+            <form id="searchBook" action="SearchBookServlet" method="get" onsubmit="handleSearchBook(event)">
+                <input type="text" id="searchQuery" name="query" placeholder="Search by Title or Author" required><br>
+                <button type="submit">Search</button>
+            </form>
+            <div id="searchResults"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Library Management System</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
